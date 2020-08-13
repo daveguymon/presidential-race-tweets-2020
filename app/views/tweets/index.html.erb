@@ -1,13 +1,35 @@
 <h2>@realDonaldTrump</h2>
 <ul>
-  <% TwitterApi.trump_tweets.each do |tweet| %>
-    <li><%= tweet.full_text %></li>
+<% cache('trump_tweets', expires_in: 6.hours) do %>
+    <% TwitterApi.trump_tweets.each do |tweet| %>
+      <li><%= tweet.full_text %></li>
+    <% end %>
   <% end %>
 </ul>
 
 <h2>@JoeBiden</h2>
 <ul>
-  <% TwitterApi.biden_tweets.each do |tweet| %>
-    <li><%= tweet.full_text %></li>
+  <% cache('biden_tweets', expires_in: 6.hours) do %>
+    <% TwitterApi.biden_tweets.each do |tweet| %>
+      <li><%= tweet.full_text %></li>
+    <% end %>
+  <% end %>
+</ul>
+
+<h2>@KamalaHarris</h2>
+<ul>
+  <% cache('harris_tweets', expires_in: 6.hours) do %>
+    <% TwitterApi.harris_tweets.each do |tweet| %>
+      <li><%= tweet.full_text %></li>
+    <% end %>
+  <% end %>
+</ul>
+
+<h2>@Mike_Pence</h2>
+<ul>
+  <% cache('pence_tweets', expires_in: 6.hours) do %>
+    <% TwitterApi.pence_tweets.each do |tweet| %>
+      <li><%= tweet.full_text %></li>
+    <% end %>
   <% end %>
 </ul>
