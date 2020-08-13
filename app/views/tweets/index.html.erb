@@ -1,0 +1,13 @@
+<h2>@realDonaldTrump</h2>
+<ul>
+  <% TwitterApi.trump_tweets.each do |tweet| %>
+    <li><%= tweet.full_text %></li>
+  <% end %>
+</ul>
+
+<h2>@JoeBiden</h2>
+<ul>
+  <% TwitterApi.biden_tweets.each do |tweet| %>
+    <li><%= tweet.full_text %></li>
+  <% end %>
+</ul>
