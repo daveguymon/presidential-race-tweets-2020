@@ -1,0 +1,12 @@
+<div class="candidate-column">
+  <h2><%= handle %></h2>
+  <div>
+  <% cache('candidate_tweets', expires_in: 6.hours) do %>
+      <% twitter_api.each do |tweet| %>
+        <div class="tweet-card">
+          <p><%= tweet.full_text %></p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

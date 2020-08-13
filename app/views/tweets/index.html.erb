@@ -1,35 +1,11 @@
-<h2>@realDonaldTrump</h2>
-<ul>
-<% cache('trump_tweets', expires_in: 6.hours) do %>
-    <% TwitterApi.trump_tweets.each do |tweet| %>
-      <li><%= tweet.full_text %></li>
-    <% end %>
-  <% end %>
-</ul>
+<div class="page-container">
+  <div class="row">
+    <%= render :partial => 'candidate_profile', locals: { handle: '@realDonaldTrump', twitter_api: TwitterApi.trump_tweets, candidate_tweets: 'trump_tweets' } %>
+    <%= render :partial => 'candidate_profile', locals: { handle: '@JoeBiden', twitter_api: TwitterApi.biden_tweets, candidate_tweets: 'biden_tweets' } %>
+  </div>
 
-<h2>@JoeBiden</h2>
-<ul>
-  <% cache('biden_tweets', expires_in: 6.hours) do %>
-    <% TwitterApi.biden_tweets.each do |tweet| %>
-      <li><%= tweet.full_text %></li>
-    <% end %>
-  <% end %>
-</ul>
-
-<h2>@KamalaHarris</h2>
-<ul>
-  <% cache('harris_tweets', expires_in: 6.hours) do %>
-    <% TwitterApi.harris_tweets.each do |tweet| %>
-      <li><%= tweet.full_text %></li>
-    <% end %>
-  <% end %>
-</ul>
-
-<h2>@Mike_Pence</h2>
-<ul>
-  <% cache('pence_tweets', expires_in: 6.hours) do %>
-    <% TwitterApi.pence_tweets.each do |tweet| %>
-      <li><%= tweet.full_text %></li>
-    <% end %>
-  <% end %>
-</ul>
+  <div class="row">
+    <%= render :partial => 'candidate_profile', locals: { handle: '@Mike_Pence', twitter_api: TwitterApi.pence_tweets, candidate_tweets: 'pence_tweets' } %>
+    <%= render :partial => 'candidate_profile', locals: { handle: '@KamalaHarris', twitter_api: TwitterApi.harris_tweets, candidate_tweets: 'harris_tweets' } %>
+  </div>
+</div>
