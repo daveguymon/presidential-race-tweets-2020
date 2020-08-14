@@ -1,6 +1,5 @@
 <div class="candidate-column">
-  <h2><%= handle %></h2>
-  <div>
+  <div class="scroll">
   <% cache('candidate_tweets', expires_in: 6.hours) do %>
       <% twitter_api.each do |tweet| %>
         <div class="tweet-card">
@@ -21,9 +20,6 @@
 
           <div class="tweet-contents">
             <p><%= text_to_true_link(tweet.full_text) %></p>
-            <% if tweet.media.first.present? %>
-              <img class="tweet-media" src="<%= tweet.media.first.media_url.to_s %>", width="507", height="285">
-            <% end %>
           </div>
         </div>
       <% end %>
