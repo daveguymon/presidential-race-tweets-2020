@@ -4,7 +4,27 @@
   <% cache('candidate_tweets', expires_in: 6.hours) do %>
       <% twitter_api.each do |tweet| %>
         <div class="tweet-card">
-          <p><%= tweet.full_text %></p>
+          <div class="tweet-header">
+            <div class="profile-pic-container">
+              <img class="profile-pic" src="<%= tweet.user.profile_image_uri.to_s %>", width="50", height="50" >
+            </div>
+
+            <div class="names-container">
+              <p class="tweet-name"><%= tweet.user.name %>
+              <p class="tweet-screen-name"><%= '@' + tweet.user.screen_name %>
+            </div>
+
+            <div class="time-container">
+              <p class="tweet-time"><%= time_ago_in_words(tweet.created_at).gsub('about', 'About') + " ago." %></p>
+            </div>
+          </div>
+
+          <div class="tweet-contents">
+            <p><%= text_to_true_link(tweet.full_text) %></p>
+            <% if tweet.media.first.present? %>
+              <img class="tweet-media" src="<%= tweet.media.first.media_url.to_s %>", width="507", height="285">
+            <% end %>
+          </div>
         </div>
       <% end %>
     <% end %>

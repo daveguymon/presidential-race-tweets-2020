@@ -33,12 +33,67 @@ body {
 }
 
 .tweet-card {
-  width: 95%;
-  height: 200px;
-  background-color: $twitter-blue;
+  width: 540px;
+  min-height: 200px;
+  background-color: $white;
   border: 1px solid grey;
+  border-radius: 5px;
+  margin: 10px 0px;
+  padding: 15px;
+
+  .tweet-header {
+    display: flex;
+    flex-direction: row;
+    margin: 0px;
+
+    .profile-pic-container {
+      margin: 3px;
+      width: 50px;
+
+      .profile-pic {
+        border-radius: 50%;
+        border: 2px solid white;
+      }
+    }
+
+    .names-container {
+      margin: 3px;
+      width: 250px;
+
+      .tweet-name {
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: 700;
+        margin: 2px 0px;
+      }
+  
+      .tweet-screen-name {
+        font-size: 15px;
+        line-height: 20px;
+        color: #657786;
+      }
+    }
+
+    .time-container {
+      margin: 3px;
+      width: 200px;
+      text-align: right;
+
+      .tweet-time {
+        font-size: 15px;
+        color: #657786;
+      }
+    }
+
+    .tweet-contents {
+
+      .tweet-media {
+
+      }
+    }
+  }
 
   p {
-    color: $white;
+    color: black;
   }
 }
